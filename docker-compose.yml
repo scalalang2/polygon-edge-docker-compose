@@ -1,9 +1,9 @@
 services:
   polygon-bootnode-1:
     hostname: polygon-bootnode-1
-    image: 0xpolygon/polygon-edge:latest
-    volumes:
-      - ./data:/data
+    image: polygon
+    build:
+      context: .
     command:
       server
       --data-dir /data/test-chain-1 
@@ -14,9 +14,7 @@ services:
       --seal
   polygon-bootnode-2:
     hostname: polygon-bootnode-2
-    image: 0xpolygon/polygon-edge:latest
-    volumes:
-      - ./data:/data
+    image: polygon
     command:
       server
       --data-dir /data/test-chain-2
@@ -30,9 +28,7 @@ services:
       - polygon-bootnode-1
       - polygon-bootnode-2
     hostname: polygon-rpcnode-1
-    image: 0xpolygon/polygon-edge:latest
-    volumes:
-      - ./data:/data
+    image: polygon
     command:
       server
       --data-dir /data/test-chain-3
@@ -46,9 +42,7 @@ services:
       - polygon-bootnode-1
       - polygon-bootnode-2
     hostname: polygon-rpcnode-2
-    image: 0xpolygon/polygon-edge:latest
-    volumes:
-      - ./data:/data
+    image: polygon
     command:
       server
       --data-dir /data/test-chain-4
